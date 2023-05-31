@@ -1,0 +1,10 @@
+{
+	"$schema":"node_modules/ng-openapi-gen/ng-openapi-gen-schema.json",
+    // Mapeia o Json em objetos 
+	"input": "api-docs.json",
+    // Nome do Json da API
+    "output":"src/app/api",
+    // onde a API é gerada
+	"ignoreUnusedModels": false
+    // DTO
+}
