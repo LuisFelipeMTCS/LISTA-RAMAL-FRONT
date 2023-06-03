@@ -1,0 +1,49 @@
+<section class="example-container mat-elevation-z8" tabindex="0">
+  <table mat-table [dataSource]="ramalDataSource">
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> Id. </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="ramal">
+      <th mat-header-cell *matHeaderCellDef> Ramal </th>
+      <td mat-cell *matCellDef="let element"> {{element.ramal}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="nomeResponsavelSetor">
+      <th mat-header-cell *matHeaderCellDef> Responsável do Setor </th>
+      <td mat-cell *matCellDef="let element"> {{element.nomeResponsavelSetor}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="nomeSetor">
+      <th mat-header-cell *matHeaderCellDef> Setor </th>
+      <td mat-cell *matCellDef="let element"> {{element.nomeSetor}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="emailDepartamento">
+      <th mat-header-cell *matHeaderCellDef> Email Departamento </th>
+      <td mat-cell *matCellDef="let element"> {{element.emailDepartamento}} </td>
+    </ng-container>
+
+    <!-- Ação Column -->
+    <ng-container matColumnDef="acao">
+      <th mat-header-cell *matHeaderCellDef> Ação </th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-icon-button class="btnEditar" [routerLink]="['/ramal',element.id]">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button (click)="remover(element)">
+          <mat-icon>delete_forever</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="colunasMostrar; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: colunasMostrar;"></tr>
+  </table>
+</section>

@@ -1,0 +1,64 @@
+
+<form
+  [formGroup]="formGroup"
+  (ngSubmit)="onSubmit()"
+  class="form"
+>
+  <div class="formTipo">
+    <mat-form-field>
+      <mat-label>Ramal:</mat-label>
+      <input type="number" matInput formControlName="ramal">
+      <mat-error *ngIf="handleError('ramal', 'required')">
+        O Ramal é obrigatório
+      </mat-error>
+      <mat-error *ngIf="handleError('ramal', 'minlength')">
+        Mínimo 3 caracteres
+      </mat-error>
+      <mat-error *ngIf="handleError('ramal', 'maxlength')">
+        Máximo 50 caracteres
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Nome Responsável do Setor:</mat-label>
+      <input matInput formControlName="nomeResponsavelSetor">
+      <mat-error *ngIf="handleError('nomeResponsavelSetor', 'required')">
+        O Nome Responsável do Setor
+      </mat-error>
+      <mat-error *ngIf="handleError('nomeResponsavelSetor', 'minlength')">
+        Mínimo 3 caracteres
+      </mat-error>
+      <mat-error *ngIf="handleError('nomeResponsavelSetor', 'maxlength')">
+        Máximo 50 caracteres
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Setor:</mat-label>
+      <input matInput formControlName="nomeSetor">
+      <mat-error *ngIf="handleError('nomeSetor', 'required')">
+        O Setor é obrigatório
+      </mat-error>
+      <mat-error *ngIf="handleError('nomeSetor', 'minlength')">
+        Mínimo 3 caracteres
+      </mat-error>
+      <mat-error *ngIf="handleError('nomeSetor', 'maxlength')">
+        Máximo 50 caracteres
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>E-mail do Departamento:</mat-label>
+      <input matInput formControlName="emailDepartamento">
+      <mat-error *ngIf="handleError('emailDepartamento', 'required')">
+        O E-mail do Departamento é obrigatório
+      </mat-error>
+      <mat-error *ngIf="handleError('emailDepartamento', 'minlength')">
+        Mínimo 3 caracteres
+      </mat-error>
+      <mat-error *ngIf="handleError('emailDepartamento', 'maxlength')">
+        Máximo 50 caracteres
+      </mat-error>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit">Salvar</button>
+  </div>
+</form>
+
