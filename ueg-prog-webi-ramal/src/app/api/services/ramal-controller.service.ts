@@ -251,6 +251,56 @@ export class RamalControllerService extends BaseService {
   }
 
   /**
+   * Path part for operation downloadPdf
+   */
+  static readonly DownloadPdfPath = '/ /api/v1/downloadPdf';
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `downloadPdf()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  downloadPdf$Response(params?: {
+  },
+  context?: HttpContext
+
+): Observable<StrictHttpResponse<Blob>> {
+
+    const rb = new RequestBuilder(this.rootUrl, RamalControllerService.DownloadPdfPath, 'get');
+    if (params) {
+    }
+
+    return this.http.request(rb.build({
+      responseType: 'blob',
+      accept: '*/*',
+      context: context
+    })).pipe(
+      filter((r: any) => r instanceof HttpResponse),
+      map((r: HttpResponse<any>) => {
+        return r as StrictHttpResponse<Blob>;
+      })
+    );
+  }
+
+  /**
+   * This method provides access only to the response body.
+   * To access the full response (for headers, for example), `downloadPdf$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  downloadPdf(params?: {
+  },
+  context?: HttpContext
+
+): Observable<Blob> {
+
+    return this.downloadPdf$Response(params,context).pipe(
+      map((r: StrictHttpResponse<Blob>) => r.body as Blob)
+    );
+  }
+
+  /**
    * Path part for operation excluir
    */
   static readonly ExcluirPath = '/ /api/v1/excluir/{id}';

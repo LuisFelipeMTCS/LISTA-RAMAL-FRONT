@@ -1,4 +1,9 @@
 <section class="example-container mat-elevation-z8" tabindex="0">
+  <button mat-button (click)="downloadPdf()">
+    Download
+    <mat-icon>download</mat-icon>
+  </button>
+  <br/>
   <table mat-table [dataSource]="ramalDataSource">
 
     <!-- Position Column -->

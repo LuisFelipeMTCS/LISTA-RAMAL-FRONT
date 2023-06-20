@@ -45,6 +45,17 @@ export class ListarComponent implements OnInit{
       )
   }
 
+  downloadPdf(){
+    this.ramalService.downloadPdf()
+      .subscribe(resposta =>{
+        console.log('arquivo ', resposta)
+        let url = URL.createObjectURL(resposta);
+        window.open(url)
+    })
+  }
+
+
+
   showMensagemSimples( mensagem: string, duracao: number = 2000) {
     this.snackBar.open(mensagem, 'Fechar', {
       duration: duracao,
